@@ -33,4 +33,20 @@ public class Task {
         this.date = date;
     }
 
+    @Override
+    public String toString(){
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("| " + this.id + " |");
+        stringBuilder.append("| " + this.name + " |");
+        stringBuilder.append("| " + this.prioritaet + " |");
+        stringBuilder.append("| " + (this.description != null ? this.description : " ") + " |");
+        stringBuilder.append("| " + (this.date != null ? this.date : " ") + " |");
+        stringBuilder.append("| " + this.isDone + " |");
+
+        return stringBuilder.toString();
+
+    }
+
 }
