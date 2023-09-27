@@ -1,3 +1,8 @@
+/**
+ * Klasse zur Verwaltung des Kontos
+ */
+
+
 public class BankAccount {
 
     /**
