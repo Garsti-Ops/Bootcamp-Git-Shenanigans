@@ -24,6 +24,10 @@ public class Main {
             System.out.println("Poor: " + poorAccount.withdraw(100));
             System.out.println("Poor: " + richAccount.withdraw(100));
 
+            // Gebe die derzeitige Menge an Geld aus, die auf den zwei Konten gespeichert ist, um zu überprüfen, ob die der Kontostand auch neu gesetzt wird.
+            System.out.println("The account balance of the poor account is: " + poorAccount.getBalance());
+            System.out.println("The account balance of the rich account is: " + richAccount.getBalance());
+
             // Entnehme dem Konto mit mehr Geld 500 Geld und zahle diese auf das Konto mit weniger Geld ein
             System.out.println("The rich account will now pay the poor account 500 money:");
             System.out.println("Rich: " + richAccount.withdraw(500));
