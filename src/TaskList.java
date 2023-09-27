@@ -36,6 +36,10 @@ public class TaskList {
 
     }
 
+    /**
+     * Speichert die einzelnen Aufgaben in eine String Liste und gibt diese aus.
+     * @return String Liste welche alle gespeicherten Aufgaben beinhaltet
+     */
     public List<String> showList(){
         List<String> list = new ArrayList<>();
         for(int cycle = 0; cycle < this.taskList.size(); cycle++){

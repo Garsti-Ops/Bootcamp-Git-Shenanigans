@@ -33,6 +33,10 @@ public class Task {
         this.date = date;
     }
 
+    /**
+     * Speichert alle Attribute einer Aufgabe in einen String.
+     * @return String in welchen die Eigenschaften der Aufgabe gespeichert sind.
+     */
     @Override
     public String toString(){
 
