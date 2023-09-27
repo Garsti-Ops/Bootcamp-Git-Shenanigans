@@ -1,3 +1,5 @@
+package Bank;
+
 /**
  * Exceptionklasse für den Fall, dass eine Exception in einer Methode in der Klasse BankAccount ausgelöst wird.
  */

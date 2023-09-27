@@ -1,3 +1,5 @@
+package Bank;
+
 /**
  * Diese Klasse ist der Grundbaustein für alle neu erstellten Bankkonten
  */
