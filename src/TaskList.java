@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TaskList {
     Scanner scInt = new Scanner(System.in);
     Scanner scStr = new Scanner(System.in);
-    private List<Task> tasks;
+    private List<Task> taskList;
 
 
     public TaskList(){
@@ -43,7 +43,7 @@ public class TaskList {
         } else if (optionPrio == 4) {
             neuePrioritaet = Prioritaet.UNWICHTIG;
         }
-        this.tasks.add(new Task(name, neuePrioritaet));
+        this.taskList.add(new Task(name, neuePrioritaet));
     }
 
     /**
@@ -52,7 +52,7 @@ public class TaskList {
      * ID der ausgewählten Aufgabe
      */
     public void removeTask(int id) {
-        this.tasks.remove(id - 1);
+        this.taskList.remove(id - 1);
     }
 
     /**
@@ -69,13 +69,13 @@ public class TaskList {
             int n = scInt.nextInt();
             if (n == 1) {
                 System.out.println("Erstelle einen namen: ");
-                this.tasks.get(id - 1).setName(scStr.nextLine());
+                this.taskList.get(id - 1).setName(scStr.nextLine());
             } else if (n == 2) {
                 System.out.println("Vergebe ein neues Fälligkeitsdatum: ");
-                this.tasks.get(id - 1).setDate(scStr.nextLine());
+                this.taskList.get(id - 1).setDate(scStr.nextLine());
             } else if (n == 3) {
                 System.out.println("Bearbeite die Beschreibung: ");
-                this.tasks.get(id - 1).setDescription(scStr.nextLine());
+                this.taskList.get(id - 1).setDescription(scStr.nextLine());
             } else if (n == 4) {
                 Prioritaet neuePrioritaet = null;
                 System.out.println("Vergebe eine neue Priorität: \n 1. SEHR_WICHTIG \n 2. WICHTIG \n 3. NORMAL \n 4. UNWICHTIG");
@@ -89,7 +89,7 @@ public class TaskList {
                 } else if (optionPrio == 4) {
                     neuePrioritaet = Prioritaet.UNWICHTIG;
                 }
-                this.tasks.get(id - 1).setPrioritaet(neuePrioritaet);
+                this.taskList.get(id - 1).setPrioritaet(neuePrioritaet);
             } else if (n == 5) {
                 System.out.println("Vergebe der Aufgabe einen Status: \n 1. Erledigt \n 2. Nicht Erledigt ");
                 int optionStatus = scInt.nextInt();
@@ -97,7 +97,7 @@ public class TaskList {
                 if (optionStatus == 1) {
                     newStatus = true;
                 }
-                this.tasks.get(id - 1).setDone(newStatus);
+                this.taskList.get(id - 1).setDone(newStatus);
             //Auswahl der letzten Option beendet Bearbeitungsmodus
             } else if (n == 6) {
                 break;
