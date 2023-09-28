@@ -162,14 +162,14 @@ public class TaskList {
         }
     }
 
-    public void sortList(String sortBy) {
-//        if (sortBy.equalsIgnoreCase("priorität")) {
-//            sortByPrio();
-//        } else if (sortBy.equalsIgnoreCase("datum")) {
-//            sortByDate();
-//        } else if (sortBy.equalsIgnoreCase("erledigt")) {
-//            sortByIsDone();
-//        }
+    public void sortList(String sortBy) throws ParseException {
+        if (sortBy.equalsIgnoreCase("priorität")) {
+            sortByPrio();
+        } else if (sortBy.equalsIgnoreCase("datum")) {
+            sortByDate();
+        } else if (sortBy.equalsIgnoreCase("erledigt")) {
+            sortByIsDone();
+        }
     }
 
     /**
