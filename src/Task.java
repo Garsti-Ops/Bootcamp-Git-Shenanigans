@@ -34,7 +34,7 @@ public class Task {
     }
 
     public void setDone(boolean done) {
-        isDone = done;
+        this.isDone = done;
     }
 
     public String getDate() {
@@ -45,7 +45,24 @@ public class Task {
         this.date = date;
     }
 
-    public String showTask() {
-        return null;
+    /**
+     * Speichert alle Attribute einer Aufgabe in einen String.
+     * @return String in welchen die Eigenschaften der Aufgabe gespeichert sind.
+     */
+    @Override
+    public String toString(){
+
+        StringBuilder stringBuilder = new StringBuilder();
+
+        stringBuilder.append("| " + this.id + " |");
+        stringBuilder.append("| " + this.name + " |");
+        stringBuilder.append("| " + this.prioritaet + " |");
+        stringBuilder.append("| " + (this.description != null ? this.description : " ") + " |");
+        stringBuilder.append("| " + (this.date != null ? this.date : " ") + " |");
+        stringBuilder.append("| " + this.isDone + " |");
+
+        return stringBuilder.toString();
+
     }
+
 }
