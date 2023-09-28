@@ -54,6 +54,10 @@ public class TaskList {
         }
     }
 
+    /**
+     * Methode sortiert Liste anhand des Fälligkeitsdatums
+     * @throws ParseException Wenn Datum falsch eingegeben wurde
+     */
     private void sortByDate() throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN);
         for (int i = 0; i < taskList.size(); i++) {
