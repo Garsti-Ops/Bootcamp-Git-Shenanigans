@@ -4,20 +4,30 @@ import java.util.Scanner;
 
 public class Todo {
     private TaskList taskList;
-    private Scanner numberScanner;
-    private Scanner letterScanner;
+    private Scanner numberScanner = new Scanner(System.in);
+    private Scanner letterScanner = new Scanner(System.in);
 
+    public Todo(TaskList taskList){
+       this.taskList = taskList;
+    }
     /**
      * Gibt dem Benutzer verschiedene Möglichkeiten die Aufgabenliste einzusehen oder zu bearbeiten.
      */
     public void manageList() throws ParseException {
         // Zeigt dem Benutzer, welche Optionen er hat
-        System.out.println("Was willst du machen?");
+        System.out.println("Was willst du machen?☝\uFE0F\uD83E\uDD13 ");
         System.out.println("1 - Aufgabe der Liste hinzufügen");
         System.out.println("2 - Aufgabe aus der Liste entfernen");
         System.out.println("3 - Bestehende Aufgabe editieren");
         System.out.println("4 - Liste sortieren");
         System.out.println("5 - List anzeigen");
+
+//        // wichtige und witzige emoji ausgaben
+//        for (int i = 0; i < 20; i++) {
+//            System.out.print("☝\uFE0F\uD83E\uDD13");
+//        }
+//        System.out.println();
+
 
         int userInput = numberScanner.nextInt();
 

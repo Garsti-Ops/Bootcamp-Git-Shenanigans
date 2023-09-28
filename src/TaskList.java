@@ -1,12 +1,6 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Locale;
+import java.util.*;
 
 
 public class TaskList {
@@ -43,22 +37,19 @@ public class TaskList {
             }
         }
 
-//        for (Prioritaet prioritaet : Prioritaet.values()){     //  IDK OB ES FUNKTIONIERT WENN JA 10/10
-//            System.out.println(prioritaet);
-//        }
     }
 
     /**
      * Methode sortiert Liste; nicht erledigte Aufgaben stehen oben
      */
-    private void sortByIsDone() {
+    private void sortByIsDone() { //yay
         for (int i = 0; i < taskList.size(); i++) {
-            if (taskList.get(i).getIsDone()) {
+            if (!taskList.get(i).getIsDone()) {
                 System.out.println(taskList.get(i));
             }
         }
         for (int i = 0; i < taskList.size(); i++) {
-            if (!taskList.get(i).getIsDone()) {
+            if (taskList.get(i).getIsDone()) {
                 System.out.println(taskList.get(i));
             }
         }
@@ -69,14 +60,28 @@ public class TaskList {
      * @throws ParseException Wenn Datum falsch eingegeben wurde
      */
     private void sortByDate() throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.GERMAN);
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+
         for (int i = 0; i < taskList.size(); i++) {
-            String dateInString = taskList.get(i).getDate();
-            Date date = formatter.parse(dateInString);
-            for (int d = 0; d < taskList.size(); d++) {
-                taskList.sort((Comparator<? super Task>) date);
+            Task t1 = taskList.get(i);
+
+            for (int k = i + 1; k < taskList.size(); k++) {
+                Task t2 = taskList.get(k);
+
+                if (t1.getDate().before(t2.getDate())) {
+                    this.taskList.set(k, t1);
+                    this.taskList.set(i, t2);
+                }
             }
         }
+
+        List<String> lines = this.showList();
+
+        for(int cycle = 0; cycle < lines.size(); cycle++){
+            System.out.println(lines.get(cycle));
+        }
+
     }
 
     /**
@@ -107,6 +112,11 @@ public class TaskList {
      */
     public void removeTask(int id) {
         this.taskList.remove(id - 1);
+        for(int idToBeReduced = id - 1; idToBeReduced < this.taskList.size(); idToBeReduced++){
+
+            this.taskList.get(idToBeReduced).reduceId();
+
+        }
     }
 
     /**
@@ -115,7 +125,7 @@ public class TaskList {
      * @param id
      * ID der ausgewählten Aufgabe
      */
-    public void editTask(int id) {
+    public void editTask(int id) throws ParseException {
         boolean exitEditTask = false;
         while (!exitEditTask) {
 
@@ -126,7 +136,7 @@ public class TaskList {
                 this.taskList.get(id - 1).setName(scStr.nextLine());
             } else if (n == 2) {
                 System.out.println("Vergebe ein neues Fälligkeitsdatum: ");
-                this.taskList.get(id - 1).setDate(scStr.nextLine());
+                this.taskList.get(id - 1).buildDate();
             } else if (n == 3) {
                 System.out.println("Bearbeite die Beschreibung: ");
                 this.taskList.get(id - 1).setDescription(scStr.nextLine());
@@ -167,7 +177,7 @@ public class TaskList {
             sortByPrio();
         } else if (sortBy.equalsIgnoreCase("datum")) {
             sortByDate();
-        } else if (sortBy.equalsIgnoreCase("erledigt")) {
+        } else if (sortBy.equalsIgnoreCase("status")) {
             sortByIsDone();
         }
     }
