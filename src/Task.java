@@ -3,7 +3,7 @@ public class Task {
     private Prioritaet prioritaet;
     private String name;
     private String description;
-    private boolean isDone;
+    protected boolean isDone;
     private String date;
     private static int idCounter = 0;
     private int id;
@@ -11,6 +11,10 @@ public class Task {
     public Task(String name, Prioritaet prioritaet) {
         this.name = name;
         this.prioritaet = prioritaet;
+    }
+
+    public Prioritaet getPrioritaet() {
+        return this.prioritaet;
     }
 
     public void setPrioritaet(Prioritaet prioritaet) {
@@ -25,8 +29,16 @@ public class Task {
         this.description = description;
     }
 
+    public boolean getIsDone() {
+        return this.isDone;
+    }
+
     public void setDone(boolean done) {
         this.isDone = done;
+    }
+
+    public String getDate() {
+        return this.date;
     }
 
     public void setDate(String date) {

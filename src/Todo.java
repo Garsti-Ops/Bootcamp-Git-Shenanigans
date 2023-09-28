@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Todo {
     /**
      * Gibt dem Benutzer verschiedene Möglichkeiten die Aufgabenliste einzusehen oder zu bearbeiten.
      */
-    public void manageList(){
+    public void manageList() throws ParseException {
         // Zeigt dem Benutzer, welche Optionen er hat
         System.out.println("Was willst du machen?");
         System.out.println("1 - Aufgabe der Liste hinzufügen");
