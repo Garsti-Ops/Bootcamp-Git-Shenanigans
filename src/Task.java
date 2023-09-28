@@ -1,5 +1,6 @@
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -53,7 +54,7 @@ public class Task {
         this.date = date;
     }
 
-    public void reduceId(){
+    public void reduceId() {
 
         this.id -= 1;
         idCounter--;
@@ -62,10 +63,11 @@ public class Task {
 
     /**
      * Speichert alle Attribute einer Aufgabe in einen String.
+     *
      * @return String in welchen die Eigenschaften der Aufgabe gespeichert sind.
      */
     @Override
-    public String toString(){
+    public String toString() {
 
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -79,18 +81,35 @@ public class Task {
         return stringBuilder.toString();
     }
 
-    public void buildDate() throws ParseException{
-        System.out.println("Gebe den Tag ein:");
-        int day = nummerScanner.nextInt();
-        System.out.println("Gebe den Monat ein:");
-        int month = nummerScanner.nextInt();
-        System.out.println("Gebe das Jahr ein:");
-        int year = nummerScanner.nextInt();
+    public void buildDate() throws ParseException {
+        String day = "";
+        String month = "";
+        String year = "";
 
+
+       while(true) {
+           System.out.println("Gebe den Tag ein:");
+           day = nummerScanner.nextLine();
+           System.out.println("Gebe den Monat ein:");
+           month = nummerScanner.nextLine();
+           System.out.println("Gebe das Jahr ein:");
+           year = nummerScanner.nextLine();
+
+           if(Integer.parseInt(day) < 0 || Integer.parseInt(month) < 0 || Integer.parseInt(year) < 0){
+               System.err.println("Keine negativen Zahlen eingeben!");
+               continue;
+           }
+
+           break;
+       }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd.MM.yyyy");
         String fullDate = day + "." + month + "." + year;
 
         this.date = simpleDateFormat.parse(fullDate);
+    }
+
+    public String getName(){
+        return this.name;
     }
 
 }

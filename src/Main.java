@@ -1,3 +1,5 @@
+import java.text.ParseException;
+
 public class Main {
     public static void main(String[] args) {
         TaskList tasklist1 = new TaskList();
@@ -6,8 +8,10 @@ public class Main {
             try {
                 todo1.manageList();
 
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
+            } catch (ParseException parseException) {
+                System.err.println(parseException.getMessage());
+            } catch (NumberFormatException numberFormatException){
+                System.err.println(numberFormatException.getMessage() + " no number found!");
             }
         }
 
