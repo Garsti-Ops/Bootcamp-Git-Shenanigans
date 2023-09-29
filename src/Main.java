@@ -1,4 +1,5 @@
 import java.text.ParseException;
+import java.util.InputMismatchException;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +13,8 @@ public class Main {
                 System.err.println(parseException.getMessage());
             } catch (NumberFormatException numberFormatException){
                 System.err.println(numberFormatException.getMessage() + " no number found!");
+            } catch (IndexOutOfBoundsException indexOutOfBoundsException){
+                System.err.println("No task with selected id!");
             }
         }
 
